@@ -1,1 +1,4 @@
-<input {{$attributes->class(['btn', 'btn-primary'])->merge(['value' => 'Submit', 'type' => 'submit'])}} />
+@props([
+    'variant' => 'primary',
+])
+<input {{$attributes->class(['btn', 'btn-' . $variant])->merge(['value' => 'Submit', 'type' => 'submit'])}} />
