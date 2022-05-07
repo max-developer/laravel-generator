@@ -23,10 +23,10 @@
                 <td>{{<?php echo $this->MODEL_CLASS_VARIABLE ?>-><?php echo $name ?>}}</td>
                 <?php endforeach; ?>
                 <td>
-                    <a class="text-danger text-decoration-none" href="{{route('<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.destroy', $status)}}" data-confirm="Вы уверены?" data-method="DELETE">
+                    <a class="text-danger text-decoration-none" href="{{route('<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.destroy', <?php echo $this->MODEL_CLASS_VARIABLE ?>)}}" data-confirm="Вы уверены?" data-method="DELETE">
                         Удалить
                     </a>
-                    <a class="text-decoration-none" href="{{route('<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.edit', $status)}}">
+                    <a class="text-decoration-none" href="{{route('<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.edit', <?php echo $this->MODEL_CLASS_VARIABLE ?>)}}">
                         Изменить
                     </a>
                 </td>
