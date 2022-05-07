@@ -10,7 +10,7 @@
             <?php endif; ?>
         </div>
     <?php endforeach; ?>
-    <div class="form-group">
+    <div class="form-group mt-3">
         <x-form.submit :value="$submitText ?? 'Save'" />
     </div>
 </x-form>
