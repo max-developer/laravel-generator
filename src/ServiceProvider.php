@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider as SupportServiceProvider;
 use MwDevel\LaravelGenerator\Commands\CrudMakeControllerCommand;
 use MwDevel\LaravelGenerator\Commands\CrudMakeServiceCommand;
 use MwDevel\LaravelGenerator\Commands\CrudMakeViewCommand;
+use MwDevel\LaravelGenerator\Commands\CrudViewPublishCommand;
 use MwDevel\LaravelGenerator\Stub\StubFactory;
 
 class ServiceProvider extends SupportServiceProvider
@@ -25,11 +26,18 @@ class ServiceProvider extends SupportServiceProvider
                 CrudMakeControllerCommand::class,
                 CrudMakeServiceCommand::class,
                 CrudMakeViewCommand::class,
+                CrudViewPublishCommand::class,
             ]);
         }
 
+        $this->addPublishes('form');
+        $this->addPublishes('button');
+    }
+
+    protected function addPublishes(string $component): void
+    {
         $this->publishes([
-            __DIR__.'/../resources/views/components/form' => $this->app->resourcePath('views/components/form')
-        ], 'crud-components-form');
+            __DIR__.'/../resources/views/components/' . $component => $this->app->resourcePath('views/components/' . $component)
+        ], 'crud-components-' . $component);
     }
 }

@@ -15,7 +15,16 @@ php artisan crud:make:controller
 php artisan crud:make:view
 ```
 
-#### Publish views form components
+#### Publish views components
 ```
-php artisan vendor:publish --tag=crud-components-form
+php artisan crud:view:publish (form|button|all)
+```
+
+#### Js package for delete button
+```
+npm install @rails/ujs
+```
+```js
+const ujs = require('@rails/ujs');
+ujs.start();
 ```
