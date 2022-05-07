@@ -8,21 +8,21 @@
     <table class="table mt-2">
         <thead>
         <tr>
-            <th>ID</th>
+            <th class="col-1">ID</th>
             <?php foreach ($this->FIELDS as $name => $field): ?>
             <th>{{ __('<?php echo data_get($field, 'label', $name) ?>') }}</th>
             <?php endforeach; ?>
-            <th>Действия</th>
+            <th class="col-2">{{ __('Actions') }}</th>
         </tr>
         </thead>
         <tbody>
         @foreach(<?php echo $this->MODEL_CLASS_VARIABLE_PLURAL ?> as <?php echo $this->MODEL_CLASS_VARIABLE ?>)
             <tr>
-                <td class="col-1">{{<?php echo $this->MODEL_CLASS_VARIABLE ?>->id}}</td>
+                <td>{{<?php echo $this->MODEL_CLASS_VARIABLE ?>->id}}</td>
                 <?php foreach ($this->FIELDS as $name => $field): ?>
                 <td>{{<?php echo $this->MODEL_CLASS_VARIABLE ?>-><?php echo $name ?>}}</td>
                 <?php endforeach; ?>
-                <td class="col-2">
+                <td>
                     <x-button.link
                             variant="danger"
                             route="<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.destroy"
