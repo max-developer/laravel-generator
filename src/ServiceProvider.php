@@ -27,5 +27,9 @@ class ServiceProvider extends SupportServiceProvider
                 CrudMakeViewCommand::class,
             ]);
         }
+
+        $this->publishes([
+            __DIR__.'/../resources/views/components/form' => $this->app->resourcePath('views/components/form')
+        ], 'crud-components-form');
     }
 }

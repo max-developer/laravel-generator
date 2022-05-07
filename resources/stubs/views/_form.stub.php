@@ -1,18 +1,16 @@
-{{Form::model(<?php echo $this->MODEL_CLASS_VARIABLE ?>, ['url' => $url, 'method' => $method ?? 'POST'])}}
+<x-form :action="$url" :method="$method ?? 'POST'">
     <?php foreach ($this->FIELDS as $name => $field): ?>
-    <div class="form-group">
-        {{Form::label('<?php echo $name ?>', '<?php echo data_get($field, 'label', $name) ?>')}}
-        <?php if (data_get($field, 'type') === 'textarea'): ?>
-        {{Form::textarea('<?php echo $name ?>', null, ['class' => 'form-control'])}}
-        <?php elseif (data_get($field, 'type') === 'select'): ?>
-        {{Form::select('<?php echo $name ?>', null, ['class' => 'form-control'])}}
-        <?php else: ?>
-        {{Form::text('<?php echo $name ?>', null, ['class' => 'form-control'])}}
-        <?php endif; ?>
-        @error('<?php echo $name ?>')<div class="invalid-feedback">{{$errors->first('<?php echo $name ?>')}}</div>@enderror
-    </div>
+        <div class="form-group">
+            <?php if (data_get($field, 'type') === 'textarea'): ?>
+                <x-form.control :model="<?php echo $this->MODEL_CLASS_VARIABLE ?>" name="<?php echo $name ?>" type="textarea" label="<?php echo data_get($field, 'label', $name) ?>"/>
+            <?php elseif (data_get($field, 'type') === 'select'): ?>
+                <x-form.select :model="<?php echo $this->MODEL_CLASS_VARIABLE ?>" name="<?php echo $name ?>" :list="[]"/>
+            <?php else: ?>
+                <x-form.control :model="<?php echo $this->MODEL_CLASS_VARIABLE ?>" name="<?php echo $name ?>" label="<?php echo data_get($field, 'label', $name) ?>"/>
+            <?php endif; ?>
+        </div>
     <?php endforeach; ?>
-    <div class="form-check">
-        {{Form::submit($submitText ?? 'Save', ['class' => 'btn btn-primary mt-3'])}}
+    <div class="form-group">
+        <x-form.submit :value="$submitText ?? 'Save'" />
     </div>
-{{Form::close()}}
+</x-form>
