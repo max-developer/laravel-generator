@@ -10,7 +10,7 @@ class CrudMakeControllerCommand extends CrudMakeCommand
      *
      * @var string
      */
-    protected $signature = 'crud:make:controller';
+    protected $signature = 'crud:make:controller {--api=}';
 
     /**
      * The console command description.
@@ -28,12 +28,20 @@ class CrudMakeControllerCommand extends CrudMakeCommand
         $modelClass = $this->getQuestionModel();
         $serviceClass = $this->getQuestionService();
 
-        $stub = $this->stubFactory->make('controller');
+        $stub = $this->stubFactory->make($this>$this->getStubName());
         $stub->withDataClass('CONTROLLER', $controllerClass);
         $stub->withDataClass('MODEL', $modelClass);
         $stub->withDataClass('SERVICE', $serviceClass);
 
         $this->generateClass($controllerClass, $stub);
+    }
+
+    protected function getStubName(): string
+    {
+        if ($this->option('api')) {
+            return 'controller_api';
+        }
+        return 'controller';
     }
 
 }
