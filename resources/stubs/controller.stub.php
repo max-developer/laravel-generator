@@ -34,9 +34,7 @@ class <?php echo $this->CONTROLLER_CLASS_NAME ?> extends Controller
         $data = $request->validated();
         $this-><?php echo $this->SERVICE_CLASS_FIELD ?>->create($data);
 
-        $request->session()->flash('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> created');
-
-        return redirect()->route(self::ROUTE_INDEX);
+        return redirect()->route(self::ROUTE_INDEX)->with('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> created');
     }
 
     public function show(<?php echo $this->MODEL_CLASS_NAME ?> <?php echo $this->MODEL_CLASS_VARIABLE ?>)
@@ -54,16 +52,12 @@ class <?php echo $this->CONTROLLER_CLASS_NAME ?> extends Controller
         $data = $request->validated();
         $this-><?php echo $this->SERVICE_CLASS_FIELD ?>->update(<?php echo $this->MODEL_CLASS_VARIABLE ?>, $data);
 
-        $request->session()->flash('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> updated');
-
-        return redirect()->route(self::ROUTE_INDEX);
+        return redirect()->route(self::ROUTE_INDEX)->with('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> updated');
     }
 
-    public function destroy(Request $request, <?php echo $this->MODEL_CLASS_NAME ?> <?php echo $this->MODEL_CLASS_VARIABLE ?>)
+    public function destroy(<?php echo $this->MODEL_CLASS_NAME ?> <?php echo $this->MODEL_CLASS_VARIABLE ?>)
     {
         $this-><?php echo $this->SERVICE_CLASS_FIELD ?>->destroy(<?php echo $this->MODEL_CLASS_VARIABLE ?>);
-        $request->session()->flash('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> deleted');
-
-        return redirect()->route(self::ROUTE_INDEX);
+        return redirect()->route(self::ROUTE_INDEX)->with('success', '<?php echo $this->MODEL_CLASS_SINGULAR_UC ?> deleted');
     }
 }

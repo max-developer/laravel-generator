@@ -12,5 +12,6 @@
     <?php endforeach; ?>
     <div class="form-group mt-3">
         <x-form.submit :value="$submitText ?? __('Save')" />
+        <x-button.link route="<?php echo $this->MODEL_CLASS_FIELD_SNAKE_PLURAL ?>.index" :label="__('Back')" append />
     </div>
 </x-form>
