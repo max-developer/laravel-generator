@@ -27,7 +27,8 @@ class CrudViewPublishCommand extends Command
      */
     protected array $names = [
         'form',
-        'button'
+        'button',
+        'pagination',
     ];
 
     public function handle()

@@ -32,6 +32,7 @@ class ServiceProvider extends SupportServiceProvider
 
         $this->addPublishes('form');
         $this->addPublishes('button');
+        $this->addPublishes('pagination');
     }
 
     protected function addPublishes(string $component): void
