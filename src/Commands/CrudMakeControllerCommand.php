@@ -28,7 +28,7 @@ class CrudMakeControllerCommand extends CrudMakeCommand
         $modelClass = $this->getQuestionModel();
         $serviceClass = $this->getQuestionService();
 
-        $stub = $this->stubFactory->make($this>$this->getStubName());
+        $stub = $this->stubFactory->make($this->getStubName());
         $stub->withDataClass('CONTROLLER', $controllerClass);
         $stub->withDataClass('MODEL', $modelClass);
         $stub->withDataClass('SERVICE', $serviceClass);
