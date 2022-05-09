@@ -10,7 +10,7 @@ class CrudMakeControllerCommand extends CrudMakeCommand
      *
      * @var string
      */
-    protected $signature = 'crud:make:controller {--api=}';
+    protected $signature = 'crud:make:controller {--api}';
 
     /**
      * The console command description.
