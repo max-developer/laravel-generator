@@ -13,7 +13,7 @@ class CrudViewPublishCommand extends Command
      */
     protected $signature = 'crud:view:publish 
                                 {name : The name of the component (form|button|all)} 
-                                {--force=}';
+                                {--force}';
 
     /**
      * The console command description.

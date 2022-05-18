@@ -16,7 +16,7 @@ class <?php echo $this->SERVICE_CLASS_NAME ?>
     public function create(array $data): <?php echo $this->MODEL_CLASS_NAME ?>
     {
         <?php echo $this->MODEL_CLASS_VARIABLE ?> = new <?php echo $this->MODEL_CLASS_NAME ?>($data);
-        $this->saveWithRelations(<?php echo $this->MODEL_CLASS_VARIABLE ?>, array $data);
+        $this->saveWithRelations(<?php echo $this->MODEL_CLASS_VARIABLE ?>, $data);
 
         return <?php echo $this->MODEL_CLASS_VARIABLE ?>;
     }
@@ -24,7 +24,7 @@ class <?php echo $this->SERVICE_CLASS_NAME ?>
     public function update(<?php echo $this->MODEL_CLASS_NAME ?> <?php echo $this->MODEL_CLASS_VARIABLE ?>, array $data): <?php echo $this->MODEL_CLASS_NAME ?>
     {
         <?php echo $this->MODEL_CLASS_VARIABLE ?>->fill($data);
-        $this->saveWithRelations(<?php echo $this->MODEL_CLASS_VARIABLE ?>, array $data);
+        $this->saveWithRelations(<?php echo $this->MODEL_CLASS_VARIABLE ?>, $data);
 
         return <?php echo $this->MODEL_CLASS_VARIABLE ?>;
     }
